@@ -76,7 +76,7 @@ function Footer() {
 function Item() {
   return (
     <div className="item col-xs-12 col-sm-4">
-      <BiHome fontSize={80} />
+      <BiHome fontSize={70} />
       <h3>Some title</h3>
       <p>
         Voluptate voluptate Lorem culpa veniam duis magna officia sint aute anim
@@ -89,7 +89,7 @@ function Item() {
 export default function Section3() {
   return (
     <div className="home-section home-section-3">
-      <div className="content-a row">
+      <div className="content-a row" style={{backgroundColor:'#2E8BC0'}}>
         <Item />
         <Item />
         <Item />

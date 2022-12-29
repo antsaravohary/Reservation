@@ -74,7 +74,7 @@ function StyledNavbar() {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-primary" type="submit">
               Search
             </button>
           </form>

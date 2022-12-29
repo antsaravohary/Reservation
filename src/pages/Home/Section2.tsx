@@ -8,18 +8,19 @@ export default function Section2() {
           <img src={ReactLogo} alt="" />
         </div>
         <div className="content content-b col-xs-12 col-sm-12 col-md-6">
-          <h1>Adipisicing qui laboris pariatur duis occaecat.</h1>
-          <p>
-            Ad velit ut et veniam cupidatat enim eiusmod mollit eiusmod.
-            Adipisicing minim id sit amet quis incididunt exercitation dolor ea.
-            Et commodo ut enim enim sunt do cillum. Elit excepteur do excepteur
-            est minim tempor qui do do. Ad deserunt elit occaecat veniam enim
-            excepteur nulla esse. Nostrud anim sint incididunt nostrud irure
-            excepteur ut consectetur consequat. Proident reprehenderit aliquip
-            sunt sunt sit cupidatat sunt quis qui anim nostrud sint.
-          </p>
+          <h1>Concert de Dadju</h1>
+          <div className="d-flex justify-content-between">
+            <div className="row align-items-center" style={{ marginRight: 40 }}>
+              <h4>Date</h4>
+            </div>
+            <p>
+              Voici le dernier concert en nouveauté qui est annoncé par le
+              plateforme. N'attendez plus à reserver vos billets et soyez les premiers à etre sur la liste.
+            </p>
+          </div>
+
           <button type="button" className="btn btn-primary btn-lg">
-            Discover More
+            En savoir plus
           </button>
         </div>
       </div>
