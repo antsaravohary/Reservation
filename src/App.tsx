@@ -11,6 +11,14 @@ import SingleReservation from "./pages/Reservation/SingleReservation";
 import SharedLayout from "./pages/SharedLayout";
 import SharedReservationLayout from "./pages/SharedReservationLayout";
 
+import AdminLayout from "./pages/Admin/AdminLayout";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminArtiste from "./pages/Admin/AdminArtiste/AdminArtiste";
+import AdminClient from "./pages/Admin/AdminClient";
+import AdminConcert from "./pages/Admin/AdminConcert";
+import AdminSalle from "./pages/Admin/AdminSalle";
+import AdminSingleArtiste from "./pages/Admin/AdminArtiste/AdminSingleArtiste";
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +36,17 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
+
+        {/* admin routes */}
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="artiste" element={<AdminArtiste />} />
+          {/* <Route path="/:artisteId" element={<AdminSingleArtiste />} /> */}
+          <Route path="client" element={<AdminClient />} />
+          <Route path="concert" element={<AdminConcert />} />
+          <Route path="salle" element={<AdminSalle />} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
   )
