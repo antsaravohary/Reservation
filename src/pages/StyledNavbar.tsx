@@ -1,11 +1,16 @@
 import React from "react";
-import {NavLink} from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 function StyledNavbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to={'/'}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "navbar-brand text-primary" : "navbar-brand text-secondary"
+          }
+          to={"/"}
+        >
           Home
         </NavLink>
         <button
@@ -22,20 +27,34 @@ function StyledNavbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to={'/reservation/concerts'}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link text-primary" : "nav-link text-secondary"
+                }
+                to={"/reservation/concerts"}
+              >
                 Réservation
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to={'/about'}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link text-primary" : "nav-link text-secondary"
+                }
+                to={"/about"}
+              >
                 A propos
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to={'signup'}>S'inscrire</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to={'login'}>Se connecter</NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link text-primary" : "nav-link text-secondary"
+                }
+                to={"login"}
+              >
+                Se connecter
+              </NavLink>
             </li>
           </ul>
           <form className="d-flex" role="search">
@@ -45,7 +64,7 @@ function StyledNavbar() {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-primary" type="submit">
               Search
             </button>
           </form>

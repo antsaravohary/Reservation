@@ -1,0 +1,85 @@
+.home-section-1 .content {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-section-1 .content-b {
+  align-items: center;
+  background-image: url(../../assets/blob.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.home-section-1 .content-b img {
+  width: 300px;
+}
+
+.home-section-2,
+.home-section-3 {
+  min-height: 100vh;
+}
+
+.home-section-2 .content {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-section-2 .content-a {
+  background-color: rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.home-section-2 .content-a img {
+  width: 300px;
+}
+
+.home-section-3 {
+  padding: 20px;
+}
+
+.home-section-3 .content-a {
+  background-color: #ef5350;
+  color: #fff;
+  min-height: calc(100vh / 2);
+  padding: 20px;
+}
+
+.home-section-3 .content-a .item {
+  padding: 60px 20px 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-section-3 .footer {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-section-1 .content {
+    padding: 40px;
+  }
+
+  .home-section-1 .content-b img {
+    width: 200px;
+  }
+
+  .home-section-2 .content-a img {
+    width: 200px;
+  }
+
+  .home-section-3 .content-a .item {
+    padding: 20px 20px 20px 20px;
+  }
+}
