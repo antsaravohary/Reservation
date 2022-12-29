@@ -51,16 +51,6 @@ function StyledNavbar() {
                 className={({ isActive }) =>
                   isActive ? "nav-link text-primary" : "nav-link text-secondary"
                 }
-                to={"signup"}
-              >
-                S'inscrire
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-primary" : "nav-link text-secondary"
-                }
                 to={"login"}
               >
                 Se connecter
