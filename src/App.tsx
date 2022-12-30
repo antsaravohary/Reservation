@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import CardConcert from "./components/CardConcert";
 import About from "./pages/About/About";
 import Concert from "./pages/Concert/Concert";
@@ -13,11 +13,10 @@ import SharedReservationLayout from "./pages/SharedReservationLayout";
 
 import AdminLayout from "./pages/Admin/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-import AdminArtiste from "./pages/Admin/AdminArtiste/AdminArtiste";
+import AdminArtist from "./pages/Admin/AdminArtist";
 import AdminClient from "./pages/Admin/AdminClient";
 import AdminConcert from "./pages/Admin/AdminConcert";
 import AdminSalle from "./pages/Admin/AdminSalle";
-import AdminSingleArtiste from "./pages/Admin/AdminArtiste/AdminSingleArtiste";
 
 function App() {
   return (
@@ -39,9 +38,8 @@ function App() {
 
         {/* admin routes */}
         <Route path="admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="artiste" element={<AdminArtiste />} />
-          {/* <Route path="/:artisteId" element={<AdminSingleArtiste />} /> */}
+          <Route index element={<Navigate to='/admin/artiste' />} />
+          <Route path="artiste" element={<AdminArtist />} />
           <Route path="client" element={<AdminClient />} />
           <Route path="concert" element={<AdminConcert />} />
           <Route path="salle" element={<AdminSalle />} />

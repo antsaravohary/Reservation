@@ -1,11 +1,10 @@
 import React from 'react'
-
 import { RiDeleteBinLine, RiEditLine } from 'react-icons/ri'
-import Salle from '../../models/Salle'
+import Artist from '../../models/Artist'
 import { Link } from "react-router-dom";
 
-function AdminSalle() {
 
+function AdminArtist() {
   const [showForm, setForm] = React.useState(false);
 
   const toggleForm = () => {
@@ -13,26 +12,26 @@ function AdminSalle() {
   }
 
   const deleteArtist = (id:number) => {
-    console.log("delete salle" + id)
+    console.log("delete artist" + id)
   }
     
   //remplacevana amin'ny objet appelé en back end ty
-  const salles : Array<Salle> = [
-    { id: 1, name: "Salle 1" },
-    { id: 2, name: "Salle 2" }
+  const artists : Array<Artist> = [
+    { id: 1, name: "Mark" },
+    { id: 2, name: "Jacob" }
   ]
 
-  const listItems = salles.map(( salle ) => 
-    <tr key={salle.id}>
-        <th scope="row">{ salle.id }</th>
-        <td>{ salle.name }</td>
-        <td><span onClick={() => deleteArtist(salle.id)}><RiDeleteBinLine /> </span> <RiEditLine /></td>
+  const listItems = artists.map(( artist ) => 
+    <tr key={artist.id}>
+        <th scope="row">{ artist.id }</th>
+        <td>{ artist.name }</td>
+        <td><span onClick={() => deleteArtist(artist.id)}><RiDeleteBinLine /> </span> <RiEditLine /></td>
     </tr>
   )
 
   return (
     <div>
-        <h2>Salle</h2>
+        <h2>Artistes</h2>
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -45,7 +44,7 @@ function AdminSalle() {
                 { listItems }
             </tbody>
         </table>
-        <button className='btn btn-primary' onClick={toggleForm}>Ajouter une salle</button>
+        <button className='btn btn-primary' onClick={toggleForm}>Ajouter un artiste</button>
 
         { showForm &&
         <form className='mt-4' style= {{ display: 'block' }}>
@@ -61,4 +60,4 @@ function AdminSalle() {
   )
 }
 
-export default AdminSalle
+export default AdminArtist
