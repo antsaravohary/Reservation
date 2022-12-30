@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import { BiUser } from "react-icons/all";
 
 function StyledNavbar() {
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
         <NavLink
           className={({ isActive }) =>
-            isActive ? "navbar-brand text-primary" : "navbar-brand text-secondary"
+            isActive
+              ? "navbar-brand text-primary"
+              : "navbar-brand text-secondary"
           }
           to={"/"}
         >
@@ -36,26 +42,39 @@ function StyledNavbar() {
                 Réservation
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-primary" : "nav-link text-secondary"
-                }
-                to={"/about"}
-              >
-                A propos
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-primary" : "nav-link text-secondary"
-                }
-                to={"login"}
-              >
-                Se connecter
-              </NavLink>
-            </li>
+            {user ? (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link text-primary"
+                      : "nav-link text-secondary"
+                  }
+                  to={"/billets"}
+                >
+                  Nos billets
+                </NavLink>
+              </li>
+            ) : (
+              <></>
+            )}
+
+            {user ? (
+              <></>
+            ) : (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link text-primary"
+                      : "nav-link text-secondary"
+                  }
+                  to={"login"}
+                >
+                  Se connecter
+                </NavLink>
+              </li>
+            )}
           </ul>
           <form className="d-flex" role="search">
             <input
@@ -67,6 +86,38 @@ function StyledNavbar() {
             <button className="btn btn-outline-primary" type="submit">
               Search
             </button>
+            {user ? (
+              <div
+                className="dropstart "
+                style={{
+                  marginLeft: 10,
+                }}
+              >
+                <button
+                  className="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {user.email}
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <button
+                      className="dropdown-item"
+                      type="button"
+                      onClick={() => {
+                        logout();
+                      }}
+                    >
+                      Deconnexion
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <></>
+            )}
           </form>
         </div>
       </div>

@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import BlobBackground from "../../assets/blob.png";
 import PlayingJazzIllustration from "../../assets/playing-jazz.png";
 
 export default function Section1() {
+  const navigate = useNavigate();
+
   return (
     <div
       className="home-section home-section-1"
@@ -19,7 +22,11 @@ export default function Section1() {
             le bouton <span style={{ fontWeight: "bold" }}>Découvrir</span> pour
             en savoir plus!
           </p>
-          <button type="button" className="btn btn-primary btn-lg">
+          <button
+            type="button"
+            className="btn btn-primary btn-lg"
+            onClick={() => navigate("/reservation/concerts")}
+          >
             Découvrir
           </button>
         </div>

@@ -1,10 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import ReactLogo from "../../assets/react.svg";
 import { validationSchemaLogin } from "../../Validations/ValidationForm";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = (email: string, password: string) => {
+    const loggedIn = login(email, password);
+    if (loggedIn) navigate("/reservation/concerts");
+  };
+
   return (
     <section className="vh-100">
       <div className="container-fluid">
@@ -26,7 +36,7 @@ function Login() {
                   setSubmitting(false);
                 }}
               >
-                {({ isSubmitting }) => {
+                {({ isSubmitting, values }) => {
                   return (
                     <Form style={{ width: "23rem" }}>
                       <h2
@@ -64,9 +74,9 @@ function Login() {
                         <button
                           className="btn btn-info btn-lg btn-block"
                           type="button"
-                          onClick={() => {
-                            console.log("test");
-                          }}
+                          onClick={() =>
+                            handleLogin(values.email, values.password)
+                          }
                         >
                           Se Connecter
                         </button>

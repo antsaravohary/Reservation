@@ -1,29 +1,62 @@
-import ReactLogo from "../../assets/react.svg";
+import icon from "../../assets/react.svg";
+import CardConcert, { IConcert } from "../../components/CardConcert";
 
-export default function Section2() {
+export default function Section2({ concerts }: { concerts: IConcert[] }) {
   return (
-    <div className="home-section home-section-2">
-      <div className="row">
-        <div className="content content-a col-xs-12 col-sm-12 col-md-6">
-          <img src={ReactLogo} alt="" />
-        </div>
-        <div className="content content-b col-xs-12 col-sm-12 col-md-6">
-          <h1>Concert de Dadju</h1>
-          <div className="d-flex justify-content-between">
-            <div className="row align-items-center" style={{ marginRight: 40 }}>
-              <h4>Date</h4>
-            </div>
-            <p>
-              Voici le dernier concert en nouveauté qui est annoncé par le
-              plateforme. N'attendez plus à reserver vos billets et soyez les premiers à etre sur la liste.
-            </p>
+    <div
+      id="carouselExampleControls"
+      className="carousel slide"
+      data-bs-ride="carousel"
+      style={{
+        width: 300,
+        height: "60%",
+        alignSelf: "center",
+        marginTop: 20,
+      }}
+    >
+      <div className="carousel-inner">
+        {concerts.slice(2).map((concert, index) => (
+          <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
+            <CardConcert key={concert.id} {...concert} />
           </div>
-
-          <button type="button" className="btn btn-primary btn-lg">
-            En savoir plus
-          </button>
-        </div>
+        ))}
       </div>
+      <button
+        className="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+        style={{
+          marginLeft: -100,
+        }}
+      >
+        <span
+          className="carousel-control-prev-icon"
+          aria-hidden="true"
+          style={{
+            backgroundColor: "blue",
+          }}
+        ></span>
+        <span className="visually-hidden">Previous</span>
+      </button>
+      <button
+        className="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+        style={{
+          marginRight: -100,
+        }}
+      >
+        <span
+          className="carousel-control-next-icon"
+          aria-hidden="true"
+          style={{
+            backgroundColor: "blue",
+          }}
+        ></span>
+        <span className="visually-hidden">Next</span>
+      </button>
     </div>
   );
 }

@@ -1,9 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { validationSchemaSignup } from "../../Validations/ValidationForm";
 
+interface User {
+  firstName: string;
+  name: string;
+  address: string;
+  email: string;
+  password: string;
+}
+
 function SignUp() {
+  const navigate = useNavigate();
+
+  async function handleSignUp(user: User) {
+    // Atao axios
+    console.log("====================================");
+    console.log(user);
+    console.log("====================================");
+    navigate("/login");
+  }
+
   return (
     <section
       className="gradient-custom"
@@ -32,6 +50,7 @@ function SignUp() {
                   }}
                   validationSchema={validationSchemaSignup}
                   onSubmit={(values, { setSubmitting }) => {
+                    handleSignUp(values);
                     setSubmitting(false);
                   }}
                 >

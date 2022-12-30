@@ -1,37 +1,41 @@
 import React from "react";
 import icon from "../assets/react.svg";
 import { BsCart } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 
-interface Props {
+export interface IConcert {
+  id: number;
   title: string;
   price: number;
   date?: Date;
 }
 
-function CardConcert({ title, price, date }: Props) {
+function CardConcert({ id, title, price, date }: IConcert) {
   return (
-    <div className="card" style={{ width: "300px" }}>
-      <img src={icon} className="card-img-top" alt="..." />
-      <div className="card-body d-flex justify-content-around">
-        <div className="row align-items-center">
-          <h4>Date</h4>
+    <div className="col-xs-12 col-sm-6 col-md-3">
+      <div className="card" style={{ width: "300px" }}>
+        <img src={icon} className="card-img-top" alt="..." />
+        <div className="card-body d-flex justify-content-around">
+          <div className="row align-items-center">
+            <h6>{date?.toLocaleDateString("fr")}</h6>
+          </div>
+          <div>
+            <h3 className="card-title" style={{ textAlign: "center" }}>
+              {title}
+            </h3>
+            <p className="card-text" style={{ textAlign: "center" }}>
+              {price} Ar
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 className="card-title" style={{ textAlign: "center" }}>
-            {title}
-          </h3>
-          <p className="card-text" style={{ textAlign: "center" }}>
-            {price} Ar
-          </p>
-        </div>
+        <Link
+          to={`/reservation/concerts/${id}`}
+          className="btn btn-primary d-block mb-3"
+          style={{ alignSelf: "center", width: "50%" }}
+        >
+          Réserver <BsCart size={20} />
+        </Link>
       </div>
-      <a
-        href="#"
-        className="btn btn-primary d-block mb-3"
-        style={{ alignSelf: "center", width: "50%" }}
-      >
-        Réserver <BsCart size={20} />
-      </a>
     </div>
   );
 }

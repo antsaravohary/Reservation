@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CardConcert from "./components/CardConcert";
-import About from "./pages/About/About";
+
 import Concert from "./pages/Concert/Concert";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
@@ -10,6 +10,7 @@ import Reservation from "./pages/Reservation/Reservation";
 import SingleReservation from "./pages/Reservation/SingleReservation";
 import SharedLayout from "./pages/SharedLayout";
 import SharedReservationLayout from "./pages/SharedReservationLayout";
+import Tickets from "./pages/About/Tickets";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Route index element={<Concert />} />
             <Route path=":concertId" element={<SingleReservation />} />
           </Route>
-          <Route path="about" element={<About />} />
+          <Route path="billets" element={<Tickets />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
