@@ -6,10 +6,11 @@ import { validationSchemaSignup } from "../../Validations/ValidationForm";
 function SignUp() {
   return (
     <section
-      className="vh-100 gradient-custom"
+      className="gradient-custom"
       style={{
         background:
           "linear-gradient(24deg, rgba(63,142,251,1) 0%, rgba(169,255,225,1) 100%)",
+        minHeight: "100vh",
       }}
     >
       <div className="container py-5 h-100">
