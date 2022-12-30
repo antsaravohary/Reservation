@@ -10,9 +10,13 @@ function Login() {
 
   const { login } = useContext(AuthContext);
 
-  const handleLogin = (email: string, password: string) => {
-    const loggedIn = login(email, password);
-    if (loggedIn) navigate("/reservation/concerts");
+  const handleLogin = async (email: string, password: string) => {
+    const role = await login(email, password);
+    if (role === "ADMIN") {
+      navigate("/admin/");
+    } else if (role === "USER") {
+      navigate("/reservation/concerts");
+    }
   };
 
   return (

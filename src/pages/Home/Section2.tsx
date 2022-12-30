@@ -16,8 +16,11 @@ export default function Section2({ concerts }: { concerts: IConcert[] }) {
     >
       <div className="carousel-inner">
         {concerts.slice(2).map((concert, index) => (
-          <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
-            <CardConcert key={concert.id} {...concert} />
+          <div
+            key={concert.id}
+            className={`carousel-item ${index === 0 ? "active" : ""}`}
+          >
+            <CardConcert {...concert} />
           </div>
         ))}
       </div>

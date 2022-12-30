@@ -1,8 +1,9 @@
 interface Artist {
-    id: number;
-    name: string;
-    ville: String;
-    rue: string;
+  idUser: number;
+  name: string;
+  prenom: String;
+  email: string;
+  role?: string;
 }
 
-export default Artist
+export default Artist;

@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import CardConcert from "./components/CardConcert";
 
 import Concert from "./pages/Concert/Concert";
@@ -11,8 +11,16 @@ import SingleReservation from "./pages/Reservation/SingleReservation";
 import SharedLayout from "./pages/SharedLayout";
 import SharedReservationLayout from "./pages/SharedReservationLayout";
 import Tickets from "./pages/About/Tickets";
+import AdminArtist from "./pages/Admin/AdminArtist";
+import AdminClient from "./pages/Admin/AdminClient";
+import AdminConcert from "./pages/Admin/AdminConcert";
+import AdminLayout from "./pages/Admin/AdminLayout";
+import AdminSalle from "./pages/Admin/AdminSalle";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -29,6 +37,17 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
+        {user?.role === "ADMIN" ? (
+          <Route path="admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="/admin/artiste" />} />
+            <Route path="artiste" element={<AdminArtist />} />
+            <Route path="client" element={<AdminClient />} />
+            <Route path="concert" element={<AdminConcert />} />
+            <Route path="salle" element={<AdminSalle />} />
+          </Route>
+        ) : (
+          <></>
+        )}
       </Routes>
     </BrowserRouter>
   );

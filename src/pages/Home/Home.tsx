@@ -4,6 +4,7 @@ import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
 import { IConcert } from "../../components/CardConcert";
+import StyledNavbar from "../StyledNavbar";
 
 function Home() {
   const [concerts, setConcerts] = useState<IConcert[]>([]);
@@ -40,16 +41,18 @@ function Home() {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Section1 />
-      <Section2 concerts={concerts} />
-      <Section3 />
-    </div>
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Section1 />
+        <Section2 concerts={concerts} />
+        <Section3 />
+      </div>
+    </>
   );
 }
 

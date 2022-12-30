@@ -1,14 +1,14 @@
-import React from 'react'
-import {Outlet} from 'react-router-dom'
-import StyledNavbar from './StyledNavbar'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import StyledNavbar from "./StyledNavbar";
 
 function SharedLayout() {
   return (
     <>
-        <StyledNavbar/>
-        <Outlet/>
+      <StyledNavbar />
+      <Outlet />
     </>
-  )
+  );
 }
 
-export default SharedLayout
+export default SharedLayout;

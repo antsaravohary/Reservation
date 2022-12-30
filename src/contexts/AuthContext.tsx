@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, {
   PropsWithChildren,
   createContext,
   useEffect,
   useState,
 } from "react";
+import { API } from "../Constants";
 
 export interface User {
   idUser: number;
@@ -12,14 +14,15 @@ export interface User {
   adresse: string;
   email: string;
   billet: null | number[];
+  role: string;
 }
 
 export const AuthContext = createContext<{
-  login: (email: string, password: string) => boolean;
+  login: (email: string, password: string) => Promise<null | string>;
   logout: () => void;
   user: null | User;
 }>({
-  login: () => false,
+  login: () => Promise.resolve(null),
   logout: () => {},
   user: null,
 });
@@ -30,10 +33,15 @@ export const AuthContextProvider = ({ children }: PropsWithChildren<any>) => {
   useEffect(() => {
     const _user = localStorage.getItem("user");
 
-    if (_user) setUser(JSON.parse(_user));
+    if (_user) {
+      setUser(JSON.parse(_user)._user);
+    }
   }, []);
 
-  function login(email: string, password: string) {
+  const login = async (
+    email: string,
+    password: string
+  ): Promise<null | string> => {
     // Atao axios
 
     console.log({
@@ -41,26 +49,30 @@ export const AuthContextProvider = ({ children }: PropsWithChildren<any>) => {
       password,
     });
 
-    const _user = {
-      idUser: 1,
-      name: "Test",
+    const response = await axios.post(`${API}/utilisateur/login`, {
       email,
-      adresse: "Test",
-      prenom: "Test",
-      billet: null,
-    };
+      password,
+    });
 
-    setUser(_user);
+    if (response.data) {
+      const _user = response.data as User;
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        _user,
-      })
-    );
+      setUser(_user);
 
-    return true;
-  }
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          _user,
+        })
+      );
+
+      return Promise.resolve(_user.role);
+    } else {
+      alert("Nom d'utilisateur ou mot de passe incorrect !");
+
+      return Promise.resolve(null);
+    }
+  };
 
   function logout() {
     localStorage.clear();

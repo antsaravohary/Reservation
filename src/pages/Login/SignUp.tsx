@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { validationSchemaSignup } from "../../Validations/ValidationForm";
+import axios from "axios";
+import { API } from "../../Constants";
 
 interface User {
   firstName: string;
@@ -15,11 +17,19 @@ function SignUp() {
   const navigate = useNavigate();
 
   async function handleSignUp(user: User) {
-    // Atao axios
-    console.log("====================================");
-    console.log(user);
-    console.log("====================================");
-    navigate("/login");
+    await axios
+      .post(`${API}/utilisateur/adduser`, {
+        name: user.name,
+        prenom: user.firstName,
+        adresse: user.address,
+        email: user.email,
+        password: user.password,
+        billet: [],
+        role: "USER",
+      })
+      .then(() => {
+        navigate("/login");
+      });
   }
 
   return (
