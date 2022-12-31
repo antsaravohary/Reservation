@@ -12,15 +12,15 @@ function AdminConcert() {
   const [showForm, setForm] = React.useState(false);
 
   const getConcert = async () => {
-    const response = await axios(`${API}/artistes/getAll`);
+    const response = await axios(`${API}/concerts/getAll`);
 
-    setConcerts(response.data);
+    console.log(response.data);
+    
   };
 
   useEffect(() => {
-    (async () => {
-      await getConcert();
-    })();
+    
+    getConcert()
   }, []);
 
   const toggleForm = () => {

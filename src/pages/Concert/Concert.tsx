@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import CardConcert, { IConcert } from "../../components/CardConcert";
+import { API } from "../../Constants";
 
 function Concert() {
   const [concerts, setConcerts] = useState<IConcert[]>([]);
+
+  const fetchData = async ()=> {
+    const response = await axios(`${API}/concerts/getAll`)
+    const concert = response.data
+    console.log("concerts: " + concert);
+    
+  }
 
   useEffect(() => {
     // Axios Get all Concerts
@@ -33,6 +42,7 @@ function Concert() {
       },
     ];
     setConcerts(_concerts);
+    fetchData()
   }, []);
 
   return (
