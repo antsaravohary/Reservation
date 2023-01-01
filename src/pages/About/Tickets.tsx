@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { API } from "../../Constants";
+import axios from "axios";
 
 interface ITicket {
   id: number;
@@ -18,22 +20,30 @@ function Tickets() {
     if (user) {
       const idUser = user.idUser;
 
-      const _tickets: ITicket[] = [
-        {
-          id: 1,
-          title: "Ticket 1",
-          date: new Date(),
-        },
-        {
-          id: 2,
-          title: "Ticket 2",
-          date: new Date(),
-        },
-      ];
+      // const _tickets: ITicket[] = [
+      //   {
+      //     id: 1,
+      //     title: "Ticket 1",
+      //     date: new Date(),
+      //   },
+      //   {
+      //     id: 2,
+      //     title: "Ticket 2",
+      //     date: new Date(),
+      //   },
+      // ];
 
-      setTickets(_tickets);
+      // setTickets(_tickets);
     }
   }, [user]);
+
+  const getAllTicket = async() => {
+    try {
+      await axios.get(`${API}/billet/get`);
+    } catch (error) {
+      alert("Une erreur s'est produite")
+    }
+  }
 
   return (
     <div className="container mt-5">

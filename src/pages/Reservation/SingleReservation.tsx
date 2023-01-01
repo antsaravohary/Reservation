@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import Section2 from "../Home/CardConcertFull";
 import { useParams } from "react-router-dom";
 import { IConcert } from "../../components/CardConcert";
+import axios from "axios";
+import { API } from "../../Constants";
+import Concert from  '../../models/ConcertsReservation'
 
 function SingleReservation() {
-  const [concert, setConcert] = useState<null | IConcert>(null);
+  const [concert, setConcert] = useState<null | Concert>(null);
 
   const { concertId } = useParams<{
     concertId: string;
@@ -12,17 +15,28 @@ function SingleReservation() {
 
   useEffect(() => {
     if (concertId) {
-      // Axios Get concert by id
+      getConcertById()
     }
   }, [concertId]);
+
+  const getConcertById = async () =>{
+      try {
+        const res = await axios.get(`${API}/concerts/getConcert/${concertId}`)
+        setConcert(res.data)
+      } catch (error) {
+        alert("Une erreur s'est produite")
+      }
+  }
+
+  console.log("Reservation id:", concertId)
 
   return (
     <div>
       <Section2
         id={1}
-        title="Labore consequat pariatur esse reprehenderit."
-        price={0}
-        date={new Date()}
+        titre={concert?.titre}
+        prix={concert?.prix}
+        date={concert?.date}
       />
     </div>
   );

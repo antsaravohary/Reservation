@@ -52,7 +52,7 @@ function StyledNavbar() {
                   }
                   to={"/billets"}
                 >
-                  Nos billets
+                  Vos billets
                 </NavLink>
               </li>
             ) : (

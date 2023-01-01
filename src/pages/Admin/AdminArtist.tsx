@@ -8,19 +8,18 @@ import Salle from "../../models/Salle";
 
 function AdminArtist() {
   const [artists, setArtists] = useState<Artist[]>([]);
+  const [nom, setNom] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
   const [showForm, setForm] = React.useState(false);
 
   const getArtist = async () => {
     const response = await axios(`${API}/artistes/getSalle`);
-
     setArtists(response.data);
   };
 
   useEffect(() => {
-    (async () => {
-      await getArtist();
-    })();
+    getArtist();
   }, []);
 
   const toggleForm = () => {
@@ -39,9 +38,10 @@ function AdminArtist() {
   };
 
   const listItems = artists.map((artist) => (
-    <tr key={artist.id}>
+    <tr key={artist.name}>
       <th scope="row">{artist.id}</th>
       <td>{artist.name}</td>
+      <td> {artist.description} </td>
       <td>
         <span onClick={() => deleteArtist(artist.id)}>
           <RiDeleteBinLine size={22} color="red" title="supprimer cette artiste" style={{cursor: "pointer"}} />
@@ -50,14 +50,14 @@ function AdminArtist() {
     </tr>
   ));
 
-  const [nom, setNom] = useState<string>("");
-
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     await axios.post(`${API}/artistes/createArtiste`, {
       name: nom,
+      description: description
     });
     setNom("");
+    setDescription("");
     await getArtist();
     setForm(!showForm);
   };
@@ -70,6 +70,7 @@ function AdminArtist() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nom</th>
+            <th scope="col">Descriptions</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -96,6 +97,18 @@ function AdminArtist() {
               value={nom}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setNom(e.target.value);
+              }}
+            />
+            <label htmlFor="nom" className="form-label">
+              Description
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="nom"
+              value={description}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setDescription(e.target.value);
               }}
             />
           </div>

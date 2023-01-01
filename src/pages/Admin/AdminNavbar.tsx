@@ -51,6 +51,11 @@ function AdminNavbar() {
                 Salles
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/admin/adresse"}>
+                Adresses
+              </NavLink>
+            </li>
           </ul>
         </div>
         {user ? (
