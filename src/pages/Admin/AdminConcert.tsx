@@ -2,30 +2,24 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
 import Concert from "../../models/Concert";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../Constants";
 
 function AdminConcert() {
-  const [concerts, setConcerts] = useState<Concert[]>([]);
+  const navigate = useNavigate();
 
-  const [showForm, setForm] = React.useState(false);
+  const [concerts, setConcerts] = useState<Concert[]>([]);
 
   const getConcert = async () => {
     const response = await axios(`${API}/concerts/getAll`);
 
     console.log(response.data);
-    
   };
 
   useEffect(() => {
-    
-    getConcert()
+    getConcert();
   }, []);
-
-  const toggleForm = () => {
-    setForm(!showForm);
-  };
 
   const deleteArtist = (id: number) => {
     console.log("delete concert" + id);
@@ -55,7 +49,6 @@ function AdminConcert() {
     });
     setTitre("");
     await getConcert();
-    setForm(!showForm);
   };
 
   return (
@@ -73,43 +66,14 @@ function AdminConcert() {
         </thead>
         <tbody>{listItems}</tbody>
       </table>
-      <button className="btn btn-primary" onClick={toggleForm}>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          navigate("/admin/concert-add");
+        }}
+      >
         Ajouter un concert
       </button>
-
-      {showForm && (
-        <form className="mt-4" style={{ display: "block" }}>
-          <div className="mb-3">
-            <label htmlFor="nom" className="form-label">
-              Titre
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="titre"
-              value={titre}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setTitre(e.target.value);
-              }}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="ville" className="form-label">
-              Date
-            </label>
-            <input type="text" className="form-control" id="date" />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="rue" className="form-label">
-              Prix
-            </label>
-            <input type="number" className="form-control" id="prix" />
-          </div>
-          <button type="submit" className="btn btn-outline-primary">
-            Valider
-          </button>
-        </form>
-      )}
     </div>
   );
 }

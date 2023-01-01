@@ -18,6 +18,7 @@ import AdminLayout from "./pages/Admin/AdminLayout";
 import AdminSalle from "./pages/Admin/AdminSalle";
 import { AuthContext } from "./contexts/AuthContext";
 import AdminAdresse from "./pages/Admin/AdminAdresse";
+import AdminConcertAdd from "./pages/Admin/AdminConcertAdd";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,7 @@ function App() {
             <Route path="artiste" element={<AdminArtist />} />
             <Route path="client" element={<AdminClient />} />
             <Route path="concert" element={<AdminConcert />} />
+            <Route path="concert-add" element={<AdminConcertAdd />} />
             <Route path="salle" element={<AdminSalle />} />
             <Route path="adresse" element={<AdminAdresse />} />
           </Route>
