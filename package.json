@@ -9,13 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/core": "^7.20.7",
     "@popperjs/core": "^2.11.6",
+    "@types/react-select": "^5.0.1",
     "axios": "^1.2.2",
     "bootstrapp": "^0.0.0",
+    "chroma": "^0.0.1",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-multi-select-component": "^4.3.4",
     "react-router-dom": "^6.6.1",
     "yup": "^0.32.11"
   },

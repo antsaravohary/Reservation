@@ -17,7 +17,7 @@ function StyledNavbar() {
           }
           to={"/"}
         >
-          Home
+          Accueil
         </NavLink>
         <button
           className="navbar-toggler"
@@ -71,24 +71,16 @@ function StyledNavbar() {
                   }
                   to={"login"}
                 >
-                  Se connecter
+                  Connexion
                 </NavLink>
               </li>
             )}
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-primary" type="submit">
-              Search
-            </button>
+          <form className="d-flex " role="search">
+            
             {user ? (
               <div
-                className="dropstart "
+                className="dropstart "  
                 style={{
                   marginLeft: 10,
                 }}
@@ -110,7 +102,7 @@ function StyledNavbar() {
                         logout();
                       }}
                     >
-                      Deconnexion
+                      Déconnexion
                     </button>
                   </li>
                 </ul>

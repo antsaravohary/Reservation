@@ -4,16 +4,13 @@ function Footer() {
   return (
     <div className="footer row">
       <div className="col-xs-6 col-sm-3">
-        <h1>App Name</h1>
+        <h1>Réservation en ligne</h1>
         <p>
-          Aliqua ut pariatur proident ipsum aute aliquip id Lorem tempor culpa.
-          Qui veniam quis esse labore commodo eu consequat aute laborum occaecat
-          proident enim. Excepteur ut sit occaecat reprehenderit est tempor
-          consequat Lorem.
+          Vous pouvez reserver le concert de vos artistes preferés en toute sécurité sur ce site.
         </p>
       </div>
       <div className="col-xs-6 col-sm-3">
-        <h1>Quick Links</h1>
+        <h1>Liens rapide</h1>
         <div
           className="list-group"
           style={{
@@ -21,18 +18,18 @@ function Footer() {
           }}
         >
           <a href="#" className="list-group-item list-group-item-action">
-            Link 1
+            Notre page facebook
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Link 2
+            Suivez-nous sur twitter
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Link 3
+            Suivez-nous sur instagram
           </a>
         </div>
       </div>
       <div className="col-xs-6 col-sm-3">
-        <h1>New Products</h1>
+        <h1>Nouveautés</h1>
         <div
           className="list-group"
           style={{
@@ -51,7 +48,7 @@ function Footer() {
         </div>
       </div>
       <div className="col-xs-6 col-sm-3">
-        <h1>Supports</h1>
+        <h1>Aides</h1>
         <div
           className="list-group"
           style={{
@@ -59,13 +56,13 @@ function Footer() {
           }}
         >
           <a href="#" className="list-group-item list-group-item-action">
-            Frequently Asked Questions
+            Questions souvent posés
           </a>
           <a href="#" className="list-group-item list-group-item-action">
             Terms & Conditions
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Private Policy
+            Politique de confidentialités
           </a>
         </div>
       </div>
@@ -79,8 +76,7 @@ function Item() {
       <BiHome fontSize={70} />
       <h3>Some title</h3>
       <p>
-        Voluptate voluptate Lorem culpa veniam duis magna officia sint aute anim
-        reprehenderit elit.
+        Reserver en toute securité sur notre site
       </p>
     </div>
   );

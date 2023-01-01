@@ -8,6 +8,7 @@ import { API } from "../../Constants";
 
 function AdminSalle() {
   const [salles, setSalles] = useState<Salle[]>([]);
+  const [updateSale, setupdateSalle] = useState(false)
 
   const [showForm, setForm] = React.useState(false);
 
@@ -23,6 +24,12 @@ function AdminSalle() {
     })();
   }, []);
 
+  // useEffect(()=> {
+  //   (async () => {
+  //     await getSalles();
+  //   })();
+  // }, [updateSale])
+
   const toggleForm = () => {
     setForm(!showForm);
   };
@@ -36,12 +43,11 @@ function AdminSalle() {
       <th scope="row">{salle.id}</th>
       <td>{salle.name}</td>
       <td>{salle.nb_place}</td>
-      {/* <td>
+      <td>
         <span onClick={() => deleteArtist(salle.id)}>
-          <RiDeleteBinLine />{" "}
+          <RiDeleteBinLine style={{cursor: "pointer"}} size={22} title="supprimer cette salle" color="red" onClick={() => deleteSalle(salle.id)} />
         </span>{" "}
-        <RiEditLine />
-      </td> */}
+      </td>
     </tr>
   ));
 
@@ -59,6 +65,16 @@ function AdminSalle() {
     await getSalles();
     setForm(!showForm);
   };
+
+  const deleteSalle = async (id: number) => {
+    try{
+      await axios.delete(`${API}/salles/deletesalle/${id}`);
+      await getSalles();
+           
+    } catch(e) {
+      alert("Une erreur s'est produite lors de la suppression");
+    }
+  }
 
   return (
     <div>
@@ -100,7 +116,7 @@ function AdminSalle() {
           </div>
           <div className="mb-3">
             <label htmlFor="nom" className="form-label">
-              Nombre de salle
+              Nombre de place
             </label>
             <input
               type="number"

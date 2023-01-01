@@ -9,6 +9,7 @@ import StyledNavbar from "../StyledNavbar";
 function Home() {
   const [concerts, setConcerts] = useState<IConcert[]>([]);
 
+
   useEffect(() => {
     // Axios Get all Concerts
     const _concerts: IConcert[] = [

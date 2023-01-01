@@ -14,18 +14,16 @@ function CardConcert({ id, title, price, date }: IConcert) {
   return (
     <div className="col-xs-12 col-sm-6 col-md-3">
       <div className="card" style={{ width: "300px" }}>
+        <h3 className="card-title text-primary" style={{ textAlign: "center" }}>
+          {title}
+        </h3>
         <img src={icon} className="card-img-top" alt="..." />
         <div className="card-body d-flex justify-content-around">
           <div className="row align-items-center">
             <h6>{date?.toLocaleDateString("fr")}</h6>
           </div>
           <div>
-            <h3 className="card-title" style={{ textAlign: "center" }}>
-              {title}
-            </h3>
-            <p className="card-text" style={{ textAlign: "center" }}>
-              {price} Ar
-            </p>
+            <p className="card-text">{price} £</p>
           </div>
         </div>
         <Link

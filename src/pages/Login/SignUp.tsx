@@ -28,8 +28,11 @@ function SignUp() {
         role: "USER",
       })
       .then(() => {
-        navigate("/login");
+        navigate("/login"); 
       });
+      
+      
+      
   }
 
   return (

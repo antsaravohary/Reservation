@@ -12,7 +12,7 @@ function AdminArtist() {
   const [showForm, setForm] = React.useState(false);
 
   const getArtist = async () => {
-    const response = await axios(`${API}/artistes/getAll`);
+    const response = await axios(`${API}/artistes/getSalle`);
 
     setArtists(response.data);
   };
@@ -27,8 +27,15 @@ function AdminArtist() {
     setForm(!showForm);
   };
 
-  const deleteArtist = (id: number) => {
-    console.log("delete artist" + id);
+  console.log("***********",artists)
+
+  const deleteArtist = async (id: number) => {
+    try {
+      await axios.delete(`${API}/artistes/deleteartiste/${id}`);
+      await getArtist();
+    } catch (error) {
+      alert("Une erreur s'est produite");
+    }
   };
 
   const listItems = artists.map((artist) => (
@@ -37,9 +44,8 @@ function AdminArtist() {
       <td>{artist.name}</td>
       <td>
         <span onClick={() => deleteArtist(artist.id)}>
-          <RiDeleteBinLine />{" "}
+          <RiDeleteBinLine size={22} color="red" title="supprimer cette artiste" style={{cursor: "pointer"}} />
         </span>{" "}
-        <RiEditLine />
       </td>
     </tr>
   ));
