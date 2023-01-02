@@ -23,7 +23,7 @@ export default function AdminConcertAdd() {
   const [date, setDate] = useState<string>("");
   const [prix, setPrix] = useState<string>("");
   const [adresseRue, setAdresseRue] = useState<string>("");
-  const [adresseVille, setAdresseVille] = useState<string>("");
+
 
   const getArtist = async () => {
     const response = await axios(`${API}/artistes/getSalle`);
@@ -66,10 +66,7 @@ export default function AdminConcertAdd() {
       titre: title,
       date: date,
       prix: _prix,
-      adresse: {
-        ville: adresseVille,
-        rue: adresseRue,
-      },
+      adresse: adresseRue,
       artistes: finalArtistes,
       salle: finalSalles,
     };
@@ -153,21 +150,10 @@ export default function AdminConcertAdd() {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Rue"
+                    placeholder="Adresse"
                     value={adresseRue}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setAdresseRue(e.target.value);
-                    }}
-                  />
-                </div>
-                <div className="input-group mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Ville"
-                    value={adresseVille}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                      setAdresseVille(e.target.value);
                     }}
                   />
                 </div>

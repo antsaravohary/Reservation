@@ -41,6 +41,7 @@ function AdminConcert() {
       <td>{concert.titre}</td>
       <td>{concert.date}</td>
       <td>{concert.prix}</td>
+      <td>{concert.adresse}</td>
       <td>
         <span
           style={{ marginRight: 10, cursor: "pointer" }}
@@ -83,6 +84,7 @@ function AdminConcert() {
             <th scope="col">Titre</th>
             <th scope="col">Date</th>
             <th scope="col">Prix</th>
+            <th scope="col">Adresse</th>
             {/* <th scope="col">Actions</th> */}
           </tr>
         </thead>
