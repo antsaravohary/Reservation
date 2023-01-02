@@ -7,7 +7,7 @@ import Concert from "../../models/Concert";
 import axios from "axios";
 import { API } from "../../Constants";
 
-export default function CardConcertFull({ id, prix, titre, date }: Concert) {
+export default function CardConcertFull({ id, price, title, date, address }: IConcert) {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
 
@@ -47,10 +47,10 @@ export default function CardConcertFull({ id, prix, titre, date }: Concert) {
           <img src={ReactLogo} alt="" />
         </div>
         <div className="content content-b col-xs-12 col-sm-12 col-md-6">
-          <h1>{titre}</h1>
+          <h1>{title}</h1>
           <div className="d-flex justify-content-between">
             <div className="row align-items-center" style={{ marginRight: 40 }}>
-              <h4>{date}</h4>
+              <h4>{date?.toLocaleDateString("fr")}</h4>
             </div>
             <p>
               Voici le dernier concert en nouveauté qui est annoncé par le

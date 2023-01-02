@@ -9,22 +9,23 @@ export interface IConcert {
   title: string;
   price: number;
   date?: Date;
+  address?: string;
 }
 
-function CardConcert({ id, titre, prix, date }: Concert) {
+function CardConcert({ address, id, price, title, date }: IConcert) {
   return (
     <div className="col-xs-12 col-sm-6 col-md-3">
       <div className="card" style={{ width: "300px" }}>
         <h3 className="card-title text-primary" style={{ textAlign: "center" }}>
-          {titre}
+          {title}
         </h3>
         <img src={icon} className="card-img-top" alt="..." />
         <div className="card-body d-flex justify-content-around">
           <div className="row align-items-center">
-            {/* <h6>{date?.toLocaleDateString("fr")}</h6> */}
+             <h6>{date?.toLocaleDateString("fr")}</h6>
           </div>
           <div>
-            <p className="card-text">{prix} £</p>
+            <p className="card-text">{price} £</p>
           </div>
         </div>
         <Link

@@ -7,7 +7,7 @@ import { API } from "../../Constants";
 import Concert from  '../../models/ConcertsReservation'
 
 function SingleReservation() {
-  const [concert, setConcert] = useState<null | Concert>(null);
+  const [concert, setConcert] = useState<null | IConcert>(null);
 
   const { concertId } = useParams<{
     concertId: string;
@@ -32,10 +32,10 @@ function SingleReservation() {
 
   return (
     <div>
-      <Section2
-        id={1}
-        titre={concert?.titre}
-        prix={concert?.prix}
+      <Section2 
+        id={concert.id}
+        title={concert?.title}
+        price={concert?.price}
         date={concert?.date}
       />
     </div>
